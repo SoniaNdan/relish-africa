@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./landingpage.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Relish — Food Delivery</title>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="#" class="logo">Relish</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#snacks">Snacks</a></li>
+                <li><a href="#menu">Foods</a></li>
+            </ul>
+            <button id="cart-btn" class="cart-btn" aria-label="View cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6 6h15l-1.5 9h-11z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="10" cy="20" r="1" fill="currentColor"></circle>
+                    <circle cx="18" cy="20" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="cart-count" aria-hidden="true">0</span>
+            </button>
+        </div>
+    </nav>
+    <header class="hero">
+        <!-- <div class="hero-grid"> -->
+        <div class="hero-content">
+            <h1 class="headline">Crave it. Order it. Love every bite.</h1>
+            <p class="subhead">Fresh, fast and delivered to your door.</p>
+            <div class="hero-ctas">
+                <a href="#menu" class="btn primary">Explore Menu</a>
+                <a href="#order" class="btn ghost">Order Now</a>
+            </div>
+        </div>
+        <div class="hero-image" aria-hidden="true"></div>
+            <div class="img"></div>
+        </div>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <section id="about" aria-label="About">
+            <div class="about-section">
+                <div class="about-image">
+                    <img src="./assets/Taste_the_Best_of_Ghana_with_Ntriwaa_Catering__From_Jollof_Rice_to_waakye__kelewele___we_bring_authentic_Ghanaian_dishes_made_with_fresh__local_ingredients__Savor_the_flavors_of_Ghana_at_your_next_eve.png" alt="Assorted dishes">
+                </div>
+
+                <div class="about-inner">
+                    <h2 class="about-heading">About</h2>
+                    <p class="about-text">Relish helps restaurants, cloud kitchens and delivery platforms showcase tasty food and convert visitors to orders.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="snacks" class="snacks-section" aria-label="Snacks">
+            <div style="max-width:var(--max-width);margin:0 auto;padding:24px 20px;">
+                <h2 style="color: var(--accent);font-size: 38px;">Snacks</h2>
+                <p class="muted" style="color: var(--card-bg); font-size: 20px;">Quick bites and starters to pair with your main order.</p>
+            </div>
+
+            <div class="dish-grid" style="max-width:var(--max-width);margin:12px auto 40px;padding:0 20px;">
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/Garlic\ Parmesan\ Fries_\ The\ Ultimate\ Crispy\ Recipe.jpg')"></div>
+                    <h3 class="dish-title">Garlic Fries</h3>
+                    <p class="dish-desc">Crispy fries tossed in garlic butter and herbs.</p>
+                    <div class="dish-meta">
+                        <span class="price">$4.50</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/Sweet\ Nendran\ Chips.jpg')"></div>
+                    <h3 class="dish-title">Plantain Chips</h3>
+                    <p class="dish-desc">Lightly salted, crunchy plantain chips — perfect for sharing.</p>
+                    <div class="dish-meta">
+                        <span class="price">$3.75</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/Keema\ Samosa\ -\ Beef\ Samosa.jpg')"></div>
+                    <h3 class="dish-title">Mini Samosas</h3>
+                    <p class="dish-desc">Golden samosas filled with spiced potatoes and peas.</p>
+                    <div class="dish-meta">
+                        <span class="price">$5.00</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section id="menu" class="menu-section">
+            <h2 style="color: var(--accent); font-size: 30px;">Popular Dishes</h2>
+            <div class="dish-grid">
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/spicy\ chicken\ bowl\ recipe\ 2025_\ 7\ Secrets\ for\ the\ Perfect\ Meal.jpg')"></div>
+                    <h3 class="dish-title">Spicy Chicken Bowl</h3>
+                    <p class="dish-desc">Crispy, spicy chicken with house sauce.</p>
+                    <div class="dish-meta">
+                        <span class="price">$9.99</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/usa\ pizza\ 🍕.jpg')"></div>
+                    <h3 class="dish-title">Veggie Delight Pizza</h3>
+                    <p class="dish-desc">Loaded with fresh seasonal veggies.</p>
+                    <div class="dish-meta">
+                        <span class="price">$12.49</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+                <article class="dish-card">
+                    <div class="dish-img" style="background-image:url('./assets/\'Double\ Cheeseburger\'\ Poster\,\ picture\,\ metal\ print\,\ paint\ by\ Zanoozi\ Art\ Prints\ _\ Displate.jpg')"></div>
+                    <h3 class="dish-title">Double Cheese Burger</h3>
+                    <p class="dish-desc">Juicy beef patties with melted cheese.</p>
+                    <div class="dish-meta">
+                        <span class="price">$10.50</span>
+                        <button class="add-btn">Add</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="order" class="order-section">
+            <h2>Your Order</h2>
+            <div class="cart">
+                <p class="cart-empty">Your cart is empty. Add delicious food to get started.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Relish — Built for restaurants & delivery platforms.</p>
+    </footer>
+
+    <script>
+        // set year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{
+            a.addEventListener('click', function(e){
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); target.focus({preventScroll:true}); }
+            });
+        });
+
+        // accessibility: focus outlines for keyboard users
+        (function(){
+            function handleFirstTab(e){
+                if(e.key === 'Tab'){
+                    document.body.classList.add('user-is-tabbing');
+                    window.removeEventListener('keydown', handleFirstTab);
+                }
+            }
+            window.addEventListener('keydown', handleFirstTab);
+        })();
+
+        // Cart functionality with persistence and remove support
+        const cartBtn = document.getElementById('cart-btn');
+        const cartCountEl = document.querySelector('.cart-count');
+        const cartEl = document.querySelector('.cart');
+        const cartLive = document.createElement('div');
+        cartLive.setAttribute('aria-live','polite');
+        cartLive.className = 'visually-hidden';
+        cartEl.parentNode.insertBefore(cartLive, cartEl);
+
+        let cart = [];
+
+        function saveCart(){ localStorage.setItem('relish_cart', JSON.stringify(cart)); }
+        function loadCart(){ try{ const raw = localStorage.getItem('relish_cart'); cart = raw ? JSON.parse(raw) : []; }catch(e){ cart = []; } }
+
+        function updateCartUI(){
+            cartCountEl.textContent = cart.length;
+            cartBtn.classList.toggle('active', cart.length > 0);
+            cartLive.textContent = cart.length === 0 ? 'Cart is empty' : `${cart.length} item(s) in cart`;
+
+            if(cart.length === 0){
+                cartEl.innerHTML = '<p class="cart-empty">Your cart is empty. Add delicious food to get started.</p>';
+                return;
+            }
+
+            const list = document.createElement('div');
+            list.className = 'cart-list';
+            list.innerHTML = cart.map((it,i)=>
+                `<div class="cart-item" data-index="${i}"><span>${it.title}</span><span class="cart-item-price">${it.price}</span><button class="cart-remove" aria-label="Remove ${it.title}">Remove</button></div>`
+            ).join('');
+
+            const total = cart.reduce((s,c)=>s + parseFloat(c.price.replace('$','')),0).toFixed(2);
+            const totalEl = document.createElement('div');
+            totalEl.className = 'cart-total';
+            totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
+
+            cartEl.innerHTML = '';
+            cartEl.appendChild(list);
+            cartEl.appendChild(totalEl);
+
+            // attach remove handlers
+            cartEl.querySelectorAll('.cart-remove').forEach(btn=>{
+                btn.addEventListener('click', (e)=>{
+                    const idx = parseInt(btn.closest('.cart-item').getAttribute('data-index'),10);
+                    if(!isNaN(idx)){
+                        cart.splice(idx,1);
+                        saveCart();
+                        updateCartUI();
+                    }
+                });
+            });
+        }
+
+        // initialize
+        loadCart();
+        updateCartUI();
+
+        // wire up add buttons
+        document.querySelectorAll('.add-btn').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                const card = btn.closest('.dish-card');
+                const title = card.querySelector('.dish-title').textContent.trim();
+                const price = card.querySelector('.price').textContent.trim();
+                cart.push({title, price});
+                saveCart();
+                updateCartUI();
+                // announce to screen readers
+                cartLive.textContent = `${title} added to cart.`;
+            });
+        });
+
+        // cart button scrolls to order section
+        cartBtn.addEventListener('click', ()=>{
+            const target = document.getElementById('order');
+            if(target){ target.scrollIntoView({behavior:'smooth'}); target.focus({preventScroll:true}); }
+        });
+
+    </script>
+</body>
+</html>
