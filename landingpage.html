@@ -17,14 +17,14 @@
                 <li><a href="#snacks">Snacks</a></li>
                 <li><a href="#menu">Foods</a></li>
             </ul>
-            <button id="cart-btn" class="cart-btn" aria-label="View cart">
+            <a href="./cart.html" class="cart-btn" aria-label="View cart">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 6h15l-1.5 9h-11z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                     <circle cx="10" cy="20" r="1" fill="currentColor"></circle>
                     <circle cx="18" cy="20" r="1" fill="currentColor"></circle>
                 </svg>
                 <span class="cart-count" aria-hidden="true">0</span>
-            </button>
+            </a>
         </div>
     </nav>
     <header class="hero">
@@ -160,61 +160,25 @@
             window.addEventListener('keydown', handleFirstTab);
         })();
 
-        // Cart functionality with persistence and remove support
-        const cartBtn = document.getElementById('cart-btn');
+        // Cart functionality with persistence
         const cartCountEl = document.querySelector('.cart-count');
-        const cartEl = document.querySelector('.cart');
         const cartLive = document.createElement('div');
         cartLive.setAttribute('aria-live','polite');
         cartLive.className = 'visually-hidden';
-        cartEl.parentNode.insertBefore(cartLive, cartEl);
+        document.body.appendChild(cartLive);
 
         let cart = [];
 
         function saveCart(){ localStorage.setItem('relish_cart', JSON.stringify(cart)); }
         function loadCart(){ try{ const raw = localStorage.getItem('relish_cart'); cart = raw ? JSON.parse(raw) : []; }catch(e){ cart = []; } }
 
-        function updateCartUI(){
-            cartCountEl.textContent = cart.length;
-            cartBtn.classList.toggle('active', cart.length > 0);
-            cartLive.textContent = cart.length === 0 ? 'Cart is empty' : `${cart.length} item(s) in cart`;
-
-            if(cart.length === 0){
-                cartEl.innerHTML = '<p class="cart-empty">Your cart is empty. Add delicious food to get started.</p>';
-                return;
-            }
-
-            const list = document.createElement('div');
-            list.className = 'cart-list';
-            list.innerHTML = cart.map((it,i)=>
-                `<div class="cart-item" data-index="${i}"><span>${it.title}</span><span class="cart-item-price">${it.price}</span><button class="cart-remove" aria-label="Remove ${it.title}">Remove</button></div>`
-            ).join('');
-
-            const total = cart.reduce((s,c)=>s + parseFloat(c.price.replace('$','')),0).toFixed(2);
-            const totalEl = document.createElement('div');
-            totalEl.className = 'cart-total';
-            totalEl.innerHTML = `<span>Total:</span> <strong>$${total}</strong>`;
-
-            cartEl.innerHTML = '';
-            cartEl.appendChild(list);
-            cartEl.appendChild(totalEl);
-
-            // attach remove handlers
-            cartEl.querySelectorAll('.cart-remove').forEach(btn=>{
-                btn.addEventListener('click', (e)=>{
-                    const idx = parseInt(btn.closest('.cart-item').getAttribute('data-index'),10);
-                    if(!isNaN(idx)){
-                        cart.splice(idx,1);
-                        saveCart();
-                        updateCartUI();
-                    }
-                });
-            });
+        function updateCartCount(){
+            cartCountEl.textContent = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
         }
 
         // initialize
         loadCart();
-        updateCartUI();
+        updateCartCount();
 
         // wire up add buttons
         document.querySelectorAll('.add-btn').forEach(btn=>{
@@ -222,20 +186,21 @@
                 const card = btn.closest('.dish-card');
                 const title = card.querySelector('.dish-title').textContent.trim();
                 const price = card.querySelector('.price').textContent.trim();
-                cart.push({title, price});
+                
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.title === title);
+                if (existingItem) {
+                    existingItem.quantity = (existingItem.quantity || 1) + 1;
+                } else {
+                    cart.push({title, price, quantity: 1});
+                }
+                
                 saveCart();
-                updateCartUI();
+                updateCartCount();
                 // announce to screen readers
                 cartLive.textContent = `${title} added to cart.`;
             });
         });
-
-        // cart button scrolls to order section
-        cartBtn.addEventListener('click', ()=>{
-            const target = document.getElementById('order');
-            if(target){ target.scrollIntoView({behavior:'smooth'}); target.focus({preventScroll:true}); }
-        });
-
     </script>
 </body>
 </html>
