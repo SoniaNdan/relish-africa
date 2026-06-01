@@ -28,7 +28,6 @@
         </div>
     </nav>
     <header class="hero">
-        <!-- <div class="hero-grid"> -->
         <div class="hero-content">
             <h1 class="headline">Crave it. Order it. Love every bite.</h1>
             <p class="subhead">Fresh, fast and delivered to your door.</p>
@@ -38,9 +37,6 @@
             </div>
         </div>
         <div class="hero-image" aria-hidden="true"></div>
-            <div class="img"></div>
-        </div>
-        </div>
     </header>
 
     <main id="main" tabindex="-1">
@@ -58,12 +54,11 @@
         </section>
 
         <section id="snacks" class="snacks-section" aria-label="Snacks">
-            <div style="max-width:var(--max-width);margin:0 auto;padding:24px 20px;">
-                <h2 style="color: var(--accent);font-size: 38px;">Snacks</h2>
-                <p class="muted" style="color: var(--card-bg); font-size: 20px;">Quick bites and starters to pair with your main order.</p>
+            <div class="section-intro">
+                <h2 class="section-title">Snacks</h2>
+                <p class="section-copy">Quick bites and starters to pair with your main order.</p>
             </div>
-
-            <div class="dish-grid" style="max-width:var(--max-width);margin:12px auto 40px;padding:0 20px;">
+            <div class="dish-grid">
                 <article class="dish-card">
                     <div class="dish-img" style="background-image:url('./assets/Garlic\ Parmesan\ Fries_\ The\ Ultimate\ Crispy\ Recipe.jpg')"></div>
                     <h3 class="dish-title">Garlic Fries</h3>
@@ -95,8 +90,10 @@
                 </article>
             </div>
         </section>
-        <section id="menu" class="menu-section">
-            <h2 style="color: var(--accent); font-size: 30px;">Popular Dishes</h2>
+        <section id="menu" class="menu-section" aria-label="Popular dishes">
+            <div class="section-intro">
+                <h2 class="section-title">Popular Dishes</h2>
+            </div>
             <div class="dish-grid">
                 <article class="dish-card">
                     <div class="dish-img" style="background-image:url('./assets/spicy\ chicken\ bowl\ recipe\ 2025_\ 7\ Secrets\ for\ the\ Perfect\ Meal.jpg')"></div>
@@ -196,7 +193,7 @@
             const total = cart.reduce((s,c)=>s + parseFloat(c.price.replace('$','')),0).toFixed(2);
             const totalEl = document.createElement('div');
             totalEl.className = 'cart-total';
-            totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
+            totalEl.innerHTML = `<span>Total:</span> <strong>$${total}</strong>`;
 
             cartEl.innerHTML = '';
             cartEl.appendChild(list);
