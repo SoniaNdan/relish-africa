@@ -137,6 +137,12 @@
         <p>© <span id="year"></span> Relish — Built for restaurants & delivery platforms.</p>
     </footer>
 
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 4v12M5 11l7-7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
     <script>
         // set year
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -200,6 +206,20 @@
                 // announce to screen readers
                 cartLive.textContent = `${title} added to cart.`;
             });
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', ()=>{
+            if(window.scrollY > 300){
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', ()=>{
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     </script>
 </body>
