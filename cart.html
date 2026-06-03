@@ -100,6 +100,139 @@
         </section>
     </main>
 
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal" style="display: none;">
+        <div class="checkout-modal-overlay" id="modal-overlay"></div>
+        <div class="checkout-modal-content">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close checkout">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="checkout-grid">
+                <!-- Order Summary Section -->
+                <div class="checkout-order-summary">
+                    <h2 class="checkout-section-title">Order Summary</h2>
+                    <div id="modal-order-items" class="checkout-items-list">
+                        <!-- Items populated by JS -->
+                    </div>
+                    <div class="checkout-summary-divider"></div>
+                    <div class="checkout-price-row">
+                        <span class="checkout-price-label">Subtotal</span>
+                        <span class="checkout-price-value" id="modal-subtotal">$0.00</span>
+                    </div>
+                    <div class="checkout-price-row">
+                        <span class="checkout-price-label">VAT (20%)</span>
+                        <span class="checkout-price-value" id="modal-vat">$0.00</span>
+                    </div>
+                    <div class="checkout-price-row checkout-total-row">
+                        <span class="checkout-price-label">Total</span>
+                        <span class="checkout-price-value checkout-total-amount" id="modal-total">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Payment Details Section -->
+                <div class="checkout-payment-section">
+                    <h2 class="checkout-section-title">Payment Details</h2>
+                    <p class="checkout-payment-subtitle">Complete your purchase by providing your payment details</p>
+
+                    <!-- Payment Options -->
+                    <div class="payment-options">
+                        <!-- Card Payment -->
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="card" class="payment-radio" checked />
+                            <div class="payment-option-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                                <span>Pay by card</span>
+                            </div>
+                        </label>
+
+                        <!-- PayPal -->
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="paypal" class="payment-radio" />
+                            <div class="payment-option-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9.74 7.18H6.32c-.26 0-.49.18-.55.44L4.62 18.62c-.04.24.14.46.39.46h2.34c.25 0 .47-.19.51-.43l.35-2.18h1.84c1.9 0 2.93-.93 3.2-2.78.14-.9.04-1.54-.42-2.02-.39-.4-1.08-.63-1.94-.63h-.76l.47-2.95h1.9c.25 0 .47-.19.51-.43l.35-2.21c.04-.24-.14-.46-.39-.46h-2.34z"/>
+                                </svg>
+                                <span>Pay with PayPal</span>
+                            </div>
+                        </label>
+
+                        <!-- OPay -->
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="opay" class="payment-radio" />
+                            <div class="payment-option-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 6v12M6 12h12"></path>
+                                </svg>
+                                <span>Pay with OPay</span>
+                            </div>
+                        </label>
+
+                        <!-- Kuda -->
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="kuda" class="payment-radio" />
+                            <div class="payment-option-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 12a9 9 0 1 0 18 0A9 9 0 0 0 3 12z"></path>
+                                    <path d="M8 12h8M12 8v8"></path>
+                                </svg>
+                                <span>Pay with Kuda</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Card Details Form (shown when card is selected) -->
+                    <div id="card-details-form" class="card-details-form">
+                        <div class="form-group">
+                            <label for="card-number" class="form-label">Card number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9101 1123" maxlength="19" class="form-input" />
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry" class="form-label">Expiration date</label>
+                                <input type="text" id="card-expiry" placeholder="04/25" maxlength="5" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv" class="form-label">CCV</label>
+                                <input type="text" id="card-cvv" placeholder="•••" maxlength="3" class="form-input" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardholder-name" class="form-label">Cardholder name</label>
+                            <input type="text" id="cardholder-name" placeholder="Marcus Faboré" class="form-input" />
+                        </div>
+
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="save-card-checkbox" class="checkbox-input" checked />
+                            <span>Save this card for later</span>
+                        </label>
+                    </div>
+
+                    <!-- Payment Button -->
+                    <button class="payment-submit-btn" id="payment-submit-btn">
+                        Pay <span id="payment-amount">$0.00</span>
+                    </button>
+
+                    <p class="payment-security-note">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        Payments are secured and encrypted
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <p>© <span id="year"></span> Relish — Built for restaurants & delivery platforms.</p>
     </footer>
@@ -461,7 +594,7 @@
         .checkout-btn {
             width: 100%;
             padding: 14px 20px;
-            background: linear-gradient(135deg, #2d5a2d 0%, #1a3a1a 100%);
+            background: var(--accent);
             color: white;
             border: none;
             border-radius: 12px;
@@ -469,16 +602,425 @@
             font-size: 1rem;
             cursor: pointer;
             margin-top: 12px;
-            transition: box-shadow .2s ease, transform .2s ease;
+            transition: box-shadow .2s ease, transform .2s ease, background .2s ease;
         }
 
         .checkout-btn:hover {
-            box-shadow: 0 12px 28px rgba(45, 90, 45, 0.3);
+            background: var(--accent-600);
+            box-shadow: 0 12px 28px rgba(255, 107, 58, 0.3);
             transform: translateY(-1px);
         }
 
         .checkout-btn:active {
             transform: translateY(0);
+        }
+
+        /* Checkout Modal Styles */
+        .checkout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .checkout-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .checkout-modal-content {
+            position: relative;
+            background: #111317;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: color .2s ease, background .2s ease;
+            z-index: 10;
+        }
+
+        .modal-close-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .checkout-order-summary,
+        .checkout-payment-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .checkout-section-title {
+            margin: 0 0 20px 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .checkout-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .checkout-item-details {
+            flex: 1;
+        }
+
+        .checkout-item-name {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .checkout-item-qty {
+            margin: 4px 0 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .checkout-item-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .checkout-summary-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 16px 0;
+        }
+
+        .checkout-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .checkout-price-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .checkout-price-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .checkout-total-row {
+            border-top: 2px solid rgba(255, 255, 255, 0.12);
+            padding-top: 16px;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        .checkout-total-row .checkout-price-label {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .checkout-total-amount {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .checkout-payment-subtitle {
+            margin: -12px 0 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Payment Options */
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .payment-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .payment-radio {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .payment-option-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+
+        .payment-radio:checked + .payment-option-box {
+            background: rgba(255, 107, 58, 0.15);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .payment-option-box svg {
+            flex-shrink: 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .payment-radio:checked + .payment-option-box svg {
+            color: var(--accent);
+        }
+
+        /* Card Details Form */
+        .card-details-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .card-details-form.hidden {
+            display: none;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-input {
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: border-color .2s ease, background .2s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            user-select: none;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        /* Payment Submit Button */
+        .payment-submit-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-600) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: box-shadow .2s ease, transform .2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .payment-submit-btn:hover {
+            box-shadow: 0 12px 30px rgba(255, 107, 58, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .payment-submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .payment-security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 16px 0 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .payment-security-note svg {
+            flex-shrink: 0;
+        }
+
+        /* Scrollbar styling */
+        .checkout-items-list::-webkit-scrollbar,
+        .card-details-form::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .checkout-items-list::-webkit-scrollbar-track,
+        .card-details-form::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .checkout-items-list::-webkit-scrollbar-thumb,
+        .card-details-form::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 58, 0.3);
+            border-radius: 3px;
+        }
+
+        .checkout-items-list::-webkit-scrollbar-thumb:hover,
+        .card-details-form::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 107, 58, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .checkout-modal-content {
+                padding: 24px;
+                max-height: 95vh;
+            }
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .checkout-modal {
+                padding: 0;
+            }
+
+            .checkout-modal-content {
+                max-width: 100%;
+                max-height: 100vh;
+                border-radius: 20px 20px 0 0;
+                padding: 20px 16px;
+                margin-top: auto;
+            }
+
+            .modal-close-btn {
+                top: 16px;
+                right: 16px;
+            }
+
+            .checkout-section-title {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+            }
+
+            .checkout-items-list {
+                max-height: 200px;
+            }
         }
 
         @media (max-width: 900px) {
@@ -747,6 +1289,113 @@
         // Initialize
         loadCart();
         updateCartUI();
+
+        // Checkout Modal Functionality
+        const checkoutModal = document.getElementById('checkout-modal');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const checkoutButtons = document.querySelectorAll('.checkout-btn');
+        const paymentRadios = document.querySelectorAll('.payment-radio');
+        const cardDetailsForm = document.getElementById('card-details-form');
+        const paymentSubmitBtn = document.getElementById('payment-submit-btn');
+
+        function openCheckoutModal() {
+            checkoutModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            updateModalCart();
+        }
+
+        function closeCheckoutModal() {
+            checkoutModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateModalCart() {
+            if (cart.length === 0) {
+                document.getElementById('modal-order-items').innerHTML = '<p style="color: rgba(255,255,255,0.6);">Your cart is empty</p>';
+                return;
+            }
+
+            const subtotal = calculateSubtotal();
+            const vat = subtotal * 0.2;
+            const total = subtotal + vat;
+
+            document.getElementById('modal-order-items').innerHTML = cart.map(item => `
+                <div class="checkout-item">
+                    <div class="checkout-item-details">
+                        <p class="checkout-item-name">${item.title}</p>
+                        <p class="checkout-item-qty">${item.quantity} Preset${item.quantity > 1 ? 's' : ''}</p>
+                    </div>
+                    <span class="checkout-item-price">$${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('modal-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('modal-vat').textContent = `$${vat.toFixed(2)}`;
+            document.getElementById('modal-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('payment-amount').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function toggleCardDetailsForm() {
+            const selectedPayment = document.querySelector('input[name="payment-method"]:checked').value;
+            if (selectedPayment === 'card') {
+                cardDetailsForm.classList.remove('hidden');
+            } else {
+                cardDetailsForm.classList.add('hidden');
+            }
+        }
+
+        // Event listeners for checkout button
+        checkoutButtons.forEach(btn => {
+            btn.addEventListener('click', openCheckoutModal);
+        });
+
+        // Event listeners for modal controls
+        modalCloseBtn.addEventListener('click', closeCheckoutModal);
+        modalOverlay.addEventListener('click', closeCheckoutModal);
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && checkoutModal.style.display === 'flex') {
+                closeCheckoutModal();
+            }
+        });
+
+        // Payment method selection
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', toggleCardDetailsForm);
+        });
+
+        // Payment submit
+        paymentSubmitBtn.addEventListener('click', () => {
+            const selectedPayment = document.querySelector('input[name="payment-method"]:checked').value;
+
+            if (selectedPayment === 'card') {
+                const cardNumber = document.getElementById('card-number').value.trim();
+                const cardExpiry = document.getElementById('card-expiry').value.trim();
+                const cardCVV = document.getElementById('card-cvv').value.trim();
+                const cardholderName = document.getElementById('cardholder-name').value.trim();
+
+                if (!cardNumber || !cardExpiry || !cardCVV || !cardholderName) {
+                    alert('Please fill in all card details');
+                    return;
+                }
+            }
+
+            // Process payment
+            const total = document.getElementById('modal-total').textContent;
+            alert(`Payment of ${total} via ${selectedPayment.toUpperCase()} processed successfully! Thank you for your order.`);
+            
+            // Clear cart and close modal
+            cart = [];
+            couponDiscount = 0;
+            saveCart();
+            closeCheckoutModal();
+            updateCartUI();
+        });
+
+        // Initialize card form visibility
+        toggleCardDetailsForm();
     </script>
 </body>
 </html>
