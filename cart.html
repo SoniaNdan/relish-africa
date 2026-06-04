@@ -68,7 +68,6 @@
                             <input type="text" class="coupon-input" id="coupon-input" placeholder="Coupon Code" aria-label="Enter coupon code">
                             <button class="apply-coupon-btn" id="apply-coupon-btn">Apply Coupon</button>
                             <button class="clear-cart-btn" id="clear-cart-btn">Clear Shopping Cart</button>
-                            <button class="test-data-btn" id="test-data-btn" style="display: none; font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 8px;">Add Test Data</button>
                         </div>
 
                         <div class="order-summary" id="order-summary" style="display: none;">
@@ -1135,20 +1134,6 @@
     <script>
         // set year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Show test data button in development
-        const testDataBtn = document.getElementById('test-data-btn');
-        testDataBtn.style.display = 'inline-block';
-        
-        testDataBtn.addEventListener('click', () => {
-            cart = [
-                { title: 'Travel Pack', price: '$18.00', quantity: 1 },
-                { title: 'Travel + Art Pack', price: '$32.00', quantity: 1 },
-                { title: 'Travel + Art + Portrait Pack', price: '$40.00', quantity: 1 }
-            ];
-            saveCart();
-            updateCartUI();
-        });
 
         // Smooth scroll for internal anchors
         document.querySelectorAll('a[href^="#"]').forEach(a => {
